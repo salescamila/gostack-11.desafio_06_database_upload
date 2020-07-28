@@ -71,7 +71,29 @@ class ImportTransactionsService {
     );
 
     await categoriesRepository.save(newCategories);
-  }
-}
+
+    // Agrupa todas as categorias
+    const finalCategories = [...newCategories, ...existentCategories];
+
+    // Mapeia novas transações e cria o objeto a ser inserido na base de dados
+    const createdTransactions = transactionRepository.create(
+      transactions.map(transaction => ({
+        title: transaction.title,
+        type: transaction.type,
+        value: transaction.value,
+        category: finalCategories.find(
+          category => category.title == transaction.category,
+        ),
+      })),
+    );
+
+    await transactionRepository.save(createdTransactions);
+
+    // Excluir arquivo que foi carregado
+    await fs.promises.unlink(filePath);
+
+    return createdTransactions;
+  };
+};
 
 export default ImportTransactionsService;
