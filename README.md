@@ -6,4 +6,23 @@ Nesse desafio, você deve continuar desenvolvendo a aplicação de gestão de tr
 
 Essa será uma aplicação que deve armazenar transações financeiras de entrada e saída e permitir o cadastro e a listagem dessas transações, além de permitir a criação de novos registros no banco de dados a partir do envio de um arquivo csv.
 
---> [Instruções do Desafio](https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/desafio-database-upload)
+
+## Executando...
+
+- As migrations
+  * <b>`yarn`
+  * `yarn typeorm migration:run`</b>
+- A Aplicação
+  * <b>`yarn`
+  * `yarn dev:server` </b>
+- Os Testes
+    * <b>`yarn`
+    * `yarn test` </b>
+
+## Instruções do Desafio
+<b>[Clique aqui](https://github.com/Rocketseat/bootcamp-gostack-desafios/tree/master/desafio-database-upload)
+
+<br/>
+
+---
+<b>[Voltar ao Índice de Repositórios](https://github.com/salescamila/gostack)</b>
