@@ -29,7 +29,10 @@ transactionsRouter.post('/', async (request, response) => {
   const createTransaction = new CreateTransactionService();
 
   const transaction = await createTransaction.execute({
-    title, value, type, category,
+    title,
+    value,
+    type,
+    category,
   });
 
   return response.json(transaction);
@@ -39,7 +42,7 @@ transactionsRouter.delete('/:id', async (request, response) => {
   const { id } = request.params;
 
   const deleteTransaction = new DeleteTransactionService();
-  
+
   await deleteTransaction.execute(id);
 
   return response.status(204).send();
@@ -54,7 +57,7 @@ transactionsRouter.post(
     const transactions = await importTransactions.execute(request.file.path);
 
     return response.json(transactions);
-  }
+  },
 );
 
 export default transactionsRouter;
